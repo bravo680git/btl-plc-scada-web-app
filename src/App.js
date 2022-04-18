@@ -1,13 +1,13 @@
-import Light from "./components/light/Light";
-import SystemStatus from "./components/systemStatus/SystemStatus";
-import SystemAlarm from "./components/systemAlarm/SystemAlarm";
+import { Route, Routes } from "react-router-dom";
+import MonitorPage from "./pages/monitor";
+import Reports from "./pages/reports";
 
 function App() {
   return (
-    <div style={{ width: "100%" }}>
-      <SystemStatus />
-      <SystemAlarm />
-    </div>
+    <Routes>
+      <Route path="/report" element={<Reports />} />
+      <Route path="/" element={<MonitorPage />} />
+    </Routes>
   );
 }
 
