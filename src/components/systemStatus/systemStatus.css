@@ -1,0 +1,26 @@
+.systemStatus__container {
+  width: 90%;
+  height: fit-content;
+  border: 2px solid black;
+  border-radius: 8px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.systemStatus__title {
+  display: block;
+  text-align: center;
+  font-size: 200%;
+  font-weight: 600;
+  margin-top: 0;
+}
+
+.systemStatus__lights {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.systemStatus__lights-item {
+  width: 25%;
+  margin: 10px 0;
+}
