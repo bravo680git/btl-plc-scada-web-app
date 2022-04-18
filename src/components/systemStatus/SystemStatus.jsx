@@ -19,7 +19,7 @@ function SystemStatus() {
   return (
     <>
       <div className="systemStatus__container">
-        <p className="systemStatus__title">Trang thai he thong</p>
+        <p className="systemStatus__title">Trạng thái hệ thống</p>
         <div className="systemStatus__lights">
           {statusList.map((item, index) => (
             <div key={index} className="systemStatus__lights-item">
