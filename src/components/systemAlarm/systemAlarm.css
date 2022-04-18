@@ -46,7 +46,7 @@
 }
 
 .systemAlarm__table tbody {
-  background-color: #ccc;
+  background-color: rgba(204, 204, 204, 0.171);
   font-size: 110%;
   overflow-y: scroll;
 }
