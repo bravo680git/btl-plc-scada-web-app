@@ -1,0 +1,29 @@
+.systemAlarm__table {
+  width: 90%;
+  border: 2px solid black;
+  border-radius: 8px;
+  margin: 10px auto;
+  padding: 20px;
+}
+
+.systemAlarm__table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.systemAlarm__table thead {
+  background-color: var(--txt);
+  color: var(--bg);
+  font-size: 130%;
+  font-weight: 500;
+}
+
+.systemAlarm__table tbody {
+  background-color: #ccc;
+}
+
+.systemAlarm__table td {
+  padding: 6px;
+  border: none;
+  border-bottom: 1px solid var(--border);
+}
