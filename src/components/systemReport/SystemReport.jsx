@@ -1,4 +1,14 @@
 import { useState } from "react";
+import {
+  LineChart,
+  Line,
+  Legend,
+  Tooltip,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  ResponsiveContainer,
+} from "recharts";
 import "./systemReport.css";
 
 function SystemReport() {
@@ -7,17 +17,35 @@ function SystemReport() {
       id: 1,
       dateTime: "2021-12-14 18-38-02",
       productsInDay: 10,
-      boxInDay: 10,
-      rollOfPaper: 10,
-      productsInABox: 10,
+      boxInDay: 20,
+      rollOfPaper: 30,
+      productsInABox: 40,
     },
     {
       id: 1,
       dateTime: "2021-12-14 18-38-02",
-      productsInDay: 10,
+      productsInDay: 5,
       boxInDay: 10,
-      rollOfPaper: 10,
-      productsInABox: 10,
+      rollOfPaper: 15,
+      productsInABox: 20,
+    },
+
+    {
+      id: 1,
+      dateTime: "2021-12-14 18-38-02",
+      productsInDay: 15,
+      boxInDay: 25,
+      rollOfPaper: 35,
+      productsInABox: 45,
+    },
+
+    {
+      id: 1,
+      dateTime: "2021-12-14 18-38-02",
+      productsInDay: 3,
+      boxInDay: 7,
+      rollOfPaper: 8,
+      productsInABox: 2,
     },
 
     {
@@ -28,6 +56,39 @@ function SystemReport() {
       rollOfPaper: 10,
       productsInABox: 10,
     },
+    {
+      id: 1,
+      dateTime: "2021-12-14 18-38-02",
+      productsInDay: 10,
+      boxInDay: 20,
+      rollOfPaper: 30,
+      productsInABox: 40,
+    },
+    {
+      id: 1,
+      dateTime: "2021-12-14 18-38-02",
+      productsInDay: 5,
+      boxInDay: 10,
+      rollOfPaper: 15,
+      productsInABox: 20,
+    },
+
+    {
+      id: 1,
+      dateTime: "2021-12-14 18-38-02",
+      productsInDay: 15,
+      boxInDay: 25,
+      rollOfPaper: 35,
+      productsInABox: 45,
+    },
+    {
+      id: 1,
+      dateTime: "2021-12-14 18-38-02",
+      productsInDay: 3,
+      boxInDay: 7,
+      rollOfPaper: 8,
+      productsInABox: 2,
+    },
 
     {
       id: 1,
@@ -36,6 +97,126 @@ function SystemReport() {
       boxInDay: 10,
       rollOfPaper: 10,
       productsInABox: 10,
+    },
+    {
+      id: 1,
+      dateTime: "2021-12-14 18-38-02",
+      productsInDay: 10,
+      boxInDay: 20,
+      rollOfPaper: 30,
+      productsInABox: 40,
+    },
+    {
+      id: 1,
+      dateTime: "2021-12-14 18-38-02",
+      productsInDay: 5,
+      boxInDay: 10,
+      rollOfPaper: 15,
+      productsInABox: 20,
+    },
+
+    {
+      id: 1,
+      dateTime: "2021-12-14 18-38-02",
+      productsInDay: 15,
+      boxInDay: 25,
+      rollOfPaper: 35,
+      productsInABox: 45,
+    },
+
+    {
+      id: 1,
+      dateTime: "2021-12-14 18-38-02",
+      productsInDay: 3,
+      boxInDay: 7,
+      rollOfPaper: 8,
+      productsInABox: 2,
+    },
+
+    {
+      id: 1,
+      dateTime: "2021-12-14 18-38-02",
+      productsInDay: 10,
+      boxInDay: 10,
+      rollOfPaper: 10,
+      productsInABox: 10,
+    },
+    {
+      id: 1,
+      dateTime: "2021-12-14 18-38-02",
+      productsInDay: 10,
+      boxInDay: 20,
+      rollOfPaper: 30,
+      productsInABox: 40,
+    },
+    {
+      id: 1,
+      dateTime: "2021-12-14 18-38-02",
+      productsInDay: 5,
+      boxInDay: 10,
+      rollOfPaper: 15,
+      productsInABox: 20,
+    },
+
+    {
+      id: 1,
+      dateTime: "2021-12-14 18-38-02",
+      productsInDay: 15,
+      boxInDay: 25,
+      rollOfPaper: 35,
+      productsInABox: 45,
+    },
+
+    {
+      id: 1,
+      dateTime: "2021-12-14 18-38-02",
+      productsInDay: 3,
+      boxInDay: 7,
+      rollOfPaper: 8,
+      productsInABox: 2,
+    },
+
+    {
+      id: 1,
+      dateTime: "2021-12-14 18-38-02",
+      productsInDay: 10,
+      boxInDay: 10,
+      rollOfPaper: 10,
+      productsInABox: 10,
+    },
+    {
+      id: 1,
+      dateTime: "2021-12-14 18-38-02",
+      productsInDay: 10,
+      boxInDay: 20,
+      rollOfPaper: 30,
+      productsInABox: 40,
+    },
+    {
+      id: 1,
+      dateTime: "2021-12-14 18-38-02",
+      productsInDay: 5,
+      boxInDay: 10,
+      rollOfPaper: 15,
+      productsInABox: 20,
+    },
+
+    {
+      id: 1,
+      dateTime: "2021-12-14 18-38-02",
+      productsInDay: 15,
+      boxInDay: 25,
+      rollOfPaper: 35,
+      productsInABox: 45,
+    },
+
+    {
+      id: 1,
+      dateTime: "2021-12-14 18-38-02",
+      productsInDay: 3,
+      boxInDay: 7,
+      rollOfPaper: 8,
+      productsInABox: 2,
     },
 
     {
@@ -47,7 +228,6 @@ function SystemReport() {
       productsInABox: 10,
     },
   ];
-
   const [fromDate, setFromDate] = useState(() => {
     const nowDate = new Date();
     const prevDate = new Date(nowDate.setDate(nowDate.getDate() - 7));
@@ -60,9 +240,8 @@ function SystemReport() {
 
   return (
     <div className="systemReport__container">
-      <p className="systemReport__title">Báo cáo sản xuất</p>
-
       <div className="systemReport__filter">
+        <p className="systemReport__title">Báo cáo sản xuất</p>
         <div>
           <label htmlFor="fromDate">Từ ngày</label>
           <input
@@ -83,6 +262,25 @@ function SystemReport() {
           />
         </div>
         <button>Tìm</button>
+      </div>
+
+      <div className="systemReport__chart">
+        <ResponsiveContainer>
+          <LineChart
+            data={data}
+            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+          >
+            <CartesianGrid strokeDasharray="1 8" />
+            <XAxis dataKey="dateTime" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Line type="monotone" dataKey="productsInDay" stroke="#8884d8" />
+            <Line type="monotone" dataKey="boxInDay" stroke="#82ca9d" />
+            <Line type="monotone" dataKey="rollOfPaper" stroke="#4da6ff" />
+            <Line type="monotone" dataKey="productsInABox" stroke="#ff80bf" />
+          </LineChart>
+        </ResponsiveContainer>
       </div>
 
       <div className="systemReport__table">
@@ -113,10 +311,10 @@ function SystemReport() {
             </tbody>
           </table>
         </div>
-      </div>
 
-      <div className="systemReport__printBtn">
-        <button>Tải về file excel</button>
+        <div className="systemReport__printBtn">
+          <button>Tải về file excel</button>
+        </div>
       </div>
     </div>
   );

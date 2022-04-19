@@ -1,8 +1,7 @@
 .systemStatus__container {
   width: 90%;
   height: fit-content;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
-    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  box-shadow: var(--main-shadow);
   border-radius: 8px;
   margin: 20px auto;
   padding: 20px;

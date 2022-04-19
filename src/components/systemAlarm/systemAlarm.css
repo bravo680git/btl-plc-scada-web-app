@@ -4,8 +4,7 @@
   margin: 50px auto;
   padding: 20px;
   height: 400px;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
-    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  box-shadow: var(--main-shadow);
 }
 
 .systemAlarm__title {
