@@ -1,8 +1,21 @@
 import { NavLink } from "react-router-dom";
 import { FaSun, FaMoon } from "react-icons/fa";
+import { useSelector, useDispatch } from "react-redux";
+import { setThemeMode } from "../../store/slices";
 import "./header.css";
 
 function Header() {
+  const dispatch = useDispatch();
+  const themeMode = useSelector((state) => state.store.themeMode);
+
+  const changeTheme = () => {
+    if (themeMode === "light") {
+      dispatch(setThemeMode("dark"));
+    } else {
+      dispatch(setThemeMode("light"));
+    }
+  };
+
   return (
     <div className="header__container">
       <div className="header__title">Chương trình giám sát máy in lụa</div>
@@ -15,8 +28,8 @@ function Header() {
       </div>
 
       <div className="header__changeTheme">
-        <div>
-          <FaSun />
+        <div onClick={changeTheme}>
+          {themeMode === "light" ? <FaMoon /> : <FaSun />}
         </div>
       </div>
 
