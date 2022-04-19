@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router-dom";
 import MonitorPage from "./pages/monitor";
-import Reports from "./pages/reports";
+import Report from "./pages/report";
 
 function App() {
   return (
     <Routes>
-      <Route path="/report" element={<Reports />} />
+      <Route path="/report" element={<Report />} />
       <Route path="/" element={<MonitorPage />} />
     </Routes>
   );
