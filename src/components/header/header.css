@@ -28,6 +28,11 @@
   color: var(--txt);
 }
 
+.header__nav a:hover {
+  background-color: var(--txt);
+  color: var(--bg);
+}
+
 .header__nav a:first-child {
   margin-right: 10px;
   text-align: center;

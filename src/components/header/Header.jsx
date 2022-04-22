@@ -22,8 +22,30 @@ function Header() {
 
       <div className="header__nav">
         <nav>
-          <NavLink to="/">Giám sát hệ thống</NavLink>
-          <NavLink to="/report">Xem báo cáo</NavLink>
+          <NavLink
+            to="/"
+            style={({ isActive }) =>
+              isActive
+                ? {
+                    borderBottom: "6px solid var(--txt)",
+                  }
+                : undefined
+            }
+          >
+            Giám sát hệ thống
+          </NavLink>
+          <NavLink
+            to="/report"
+            style={({ isActive }) =>
+              isActive
+                ? {
+                    borderBottom: "6px solid var(--txt)",
+                  }
+                : undefined
+            }
+          >
+            Xem báo cáo
+          </NavLink>
         </nav>
       </div>
 
