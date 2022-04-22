@@ -1,4 +1,5 @@
 import { useState } from "react";
+import * as excel from "../../ultils/excel";
 import {
   LineChart,
   Line,
@@ -238,6 +239,30 @@ function SystemReport() {
     return nowDate.toJSON().split("T")[0];
   });
 
+  const downloadExcelFile = () => {
+    let rowIndex = 4;
+    const workbook = excel.createExcelFile();
+    const sheet1 = workbook.getWorksheet("sheet1");
+    const nowDate = new Date();
+    data.map((item, index) => {
+      sheet1.getRow(rowIndex).values = [
+        item.id,
+        item.dateTime,
+        item.productsInDay,
+        item.rollOfPaper,
+        item.productsInABox,
+      ];
+      rowIndex++;
+    });
+
+    sheet1.getCell(rowIndex + 1, 5).value = `Ngày xuất báo cáo: ${
+      nowDate.toJSON().split("T")[0]
+    }`;
+    sheet1.getCell(rowIndex + 2, 5).value = `Nhân viên: ${"Hao"}`;
+
+    excel.saveExcelFile(workbook, "Bao cao san xuat");
+  };
+
   return (
     <div className="systemReport__container">
       <div className="systemReport__filter">
@@ -313,7 +338,7 @@ function SystemReport() {
         </div>
 
         <div className="systemReport__printBtn">
-          <button>Tải về file excel</button>
+          <button onClick={downloadExcelFile}>Tải về file excel</button>
         </div>
       </div>
     </div>
