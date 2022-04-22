@@ -1,11 +1,12 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FaSun, FaMoon } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
-import { setThemeMode } from "../../store/slices";
+import { setThemeMode, setLoginState } from "../../store/slices";
 import "./header.css";
 
 function Header() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const themeMode = useSelector((state) => state.store.themeMode);
 
   const changeTheme = () => {
@@ -14,6 +15,10 @@ function Header() {
     } else {
       dispatch(setThemeMode("light"));
     }
+  };
+
+  const handleLogout = () => {
+    dispatch(setLoginState({}));
   };
 
   return (
@@ -60,7 +65,7 @@ function Header() {
           <span>Quoc Nhien</span>
         </div>
         <div className="header__logout">
-          <button>Đăng xuất</button>
+          <button onClick={handleLogout}>Đăng xuất</button>
         </div>
       </div>
     </div>

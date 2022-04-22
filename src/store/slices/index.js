@@ -2,6 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   themeMode: localStorage.getItem("themeMode") ?? "light",
+  loginState: {
+    isLogin: localStorage.getItem("isLogin") ?? false,
+  },
 };
 
 const store = createSlice({
@@ -12,8 +15,12 @@ const store = createSlice({
       ...state,
       themeMode: action.payload,
     }),
+    setLoginState: (state, action) => ({
+      ...state,
+      loginState: action.payload,
+    }),
   },
 });
 
-export const { setThemeMode } = store.actions;
+export const { setThemeMode, setLoginState } = store.actions;
 export default store.reducer;

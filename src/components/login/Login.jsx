@@ -1,16 +1,34 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setLoginState } from "../../store/slices";
 import "./login.css";
 
 function Login() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = async () => {};
+  const handleSubmit = async () => {
+    //
+    dispatch(
+      setLoginState({
+        isLogin: true,
+      })
+    );
+    localStorage.setItem("isLogin", true);
+    navigate("/");
+  };
 
   return (
     <>
       <div className="login__container">
-        <form>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+        >
           <div className="login__title">Đăng nhập</div>
 
           <div className="login__input">
@@ -34,7 +52,9 @@ function Login() {
           </div>
 
           <div className="login__btn">
-            <button onClick={handleSubmit}>Gửi</button>
+            <button type="button" onClick={handleSubmit}>
+              Gửi
+            </button>
           </div>
         </form>
       </div>
