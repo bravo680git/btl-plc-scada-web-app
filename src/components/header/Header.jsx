@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FaSun, FaMoon } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { setThemeMode, setLoginState } from "../../store/slices";
