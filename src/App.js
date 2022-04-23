@@ -1,5 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import LoginPage from "./pages/login";
 import MonitorPage from "./pages/monitor";
 import { useEffect } from "react";
@@ -20,19 +22,20 @@ function App() {
   }, [themeMode]);
 
   useEffect(() => {
-    if (isLogin) {
-      navigate("/");
-    } else {
+    if (!isLogin) {
       navigate("/login");
     }
   }, [isLogin]);
 
   return (
-    <Routes>
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/report" element={<Report />} />
-      <Route path="/" element={<MonitorPage />} />
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/report" element={<Report />} />
+        <Route path="/" element={<MonitorPage />} />
+      </Routes>
+      <ToastContainer />
+    </>
   );
 }
 

@@ -4,6 +4,7 @@ const initialState = {
   themeMode: localStorage.getItem("themeMode") ?? "light",
   loginState: {
     isLogin: localStorage.getItem("isLogin") ?? false,
+    name: localStorage.getItem("name") ?? "",
   },
 };
 

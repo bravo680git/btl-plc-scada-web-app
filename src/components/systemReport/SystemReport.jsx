@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as excel from "../../ultils/excel";
 import {
   LineChart,
@@ -10,240 +10,42 @@ import {
   CartesianGrid,
   ResponsiveContainer,
 } from "recharts";
+import { toast } from "react-toastify";
+import fetchData from "../../api/fetchData";
 import "./systemReport.css";
 
 function SystemReport() {
-  const data = [
-    {
-      id: 1,
-      dateTime: "2021-12-14 18-38-02",
-      productsInDay: 10,
-      boxInDay: 20,
-      rollOfPaper: 30,
-      productsInABox: 40,
-    },
-    {
-      id: 1,
-      dateTime: "2021-12-14 18-38-02",
-      productsInDay: 5,
-      boxInDay: 10,
-      rollOfPaper: 15,
-      productsInABox: 20,
-    },
-
-    {
-      id: 1,
-      dateTime: "2021-12-14 18-38-02",
-      productsInDay: 15,
-      boxInDay: 25,
-      rollOfPaper: 35,
-      productsInABox: 45,
-    },
-
-    {
-      id: 1,
-      dateTime: "2021-12-14 18-38-02",
-      productsInDay: 3,
-      boxInDay: 7,
-      rollOfPaper: 8,
-      productsInABox: 2,
-    },
-
-    {
-      id: 1,
-      dateTime: "2021-12-14 18-38-02",
-      productsInDay: 10,
-      boxInDay: 10,
-      rollOfPaper: 10,
-      productsInABox: 10,
-    },
-    {
-      id: 1,
-      dateTime: "2021-12-14 18-38-02",
-      productsInDay: 10,
-      boxInDay: 20,
-      rollOfPaper: 30,
-      productsInABox: 40,
-    },
-    {
-      id: 1,
-      dateTime: "2021-12-14 18-38-02",
-      productsInDay: 5,
-      boxInDay: 10,
-      rollOfPaper: 15,
-      productsInABox: 20,
-    },
-
-    {
-      id: 1,
-      dateTime: "2021-12-14 18-38-02",
-      productsInDay: 15,
-      boxInDay: 25,
-      rollOfPaper: 35,
-      productsInABox: 45,
-    },
-    {
-      id: 1,
-      dateTime: "2021-12-14 18-38-02",
-      productsInDay: 3,
-      boxInDay: 7,
-      rollOfPaper: 8,
-      productsInABox: 2,
-    },
-
-    {
-      id: 1,
-      dateTime: "2021-12-14 18-38-02",
-      productsInDay: 10,
-      boxInDay: 10,
-      rollOfPaper: 10,
-      productsInABox: 10,
-    },
-    {
-      id: 1,
-      dateTime: "2021-12-14 18-38-02",
-      productsInDay: 10,
-      boxInDay: 20,
-      rollOfPaper: 30,
-      productsInABox: 40,
-    },
-    {
-      id: 1,
-      dateTime: "2021-12-14 18-38-02",
-      productsInDay: 5,
-      boxInDay: 10,
-      rollOfPaper: 15,
-      productsInABox: 20,
-    },
-
-    {
-      id: 1,
-      dateTime: "2021-12-14 18-38-02",
-      productsInDay: 15,
-      boxInDay: 25,
-      rollOfPaper: 35,
-      productsInABox: 45,
-    },
-
-    {
-      id: 1,
-      dateTime: "2021-12-14 18-38-02",
-      productsInDay: 3,
-      boxInDay: 7,
-      rollOfPaper: 8,
-      productsInABox: 2,
-    },
-
-    {
-      id: 1,
-      dateTime: "2021-12-14 18-38-02",
-      productsInDay: 10,
-      boxInDay: 10,
-      rollOfPaper: 10,
-      productsInABox: 10,
-    },
-    {
-      id: 1,
-      dateTime: "2021-12-14 18-38-02",
-      productsInDay: 10,
-      boxInDay: 20,
-      rollOfPaper: 30,
-      productsInABox: 40,
-    },
-    {
-      id: 1,
-      dateTime: "2021-12-14 18-38-02",
-      productsInDay: 5,
-      boxInDay: 10,
-      rollOfPaper: 15,
-      productsInABox: 20,
-    },
-
-    {
-      id: 1,
-      dateTime: "2021-12-14 18-38-02",
-      productsInDay: 15,
-      boxInDay: 25,
-      rollOfPaper: 35,
-      productsInABox: 45,
-    },
-
-    {
-      id: 1,
-      dateTime: "2021-12-14 18-38-02",
-      productsInDay: 3,
-      boxInDay: 7,
-      rollOfPaper: 8,
-      productsInABox: 2,
-    },
-
-    {
-      id: 1,
-      dateTime: "2021-12-14 18-38-02",
-      productsInDay: 10,
-      boxInDay: 10,
-      rollOfPaper: 10,
-      productsInABox: 10,
-    },
-    {
-      id: 1,
-      dateTime: "2021-12-14 18-38-02",
-      productsInDay: 10,
-      boxInDay: 20,
-      rollOfPaper: 30,
-      productsInABox: 40,
-    },
-    {
-      id: 1,
-      dateTime: "2021-12-14 18-38-02",
-      productsInDay: 5,
-      boxInDay: 10,
-      rollOfPaper: 15,
-      productsInABox: 20,
-    },
-
-    {
-      id: 1,
-      dateTime: "2021-12-14 18-38-02",
-      productsInDay: 15,
-      boxInDay: 25,
-      rollOfPaper: 35,
-      productsInABox: 45,
-    },
-
-    {
-      id: 1,
-      dateTime: "2021-12-14 18-38-02",
-      productsInDay: 3,
-      boxInDay: 7,
-      rollOfPaper: 8,
-      productsInABox: 2,
-    },
-
-    {
-      id: 1,
-      dateTime: "2021-12-14 18-38-02",
-      productsInDay: 10,
-      boxInDay: 10,
-      rollOfPaper: 10,
-      productsInABox: 10,
-    },
-  ];
   const [fromDate, setFromDate] = useState(() => {
     const nowDate = new Date();
     const prevDate = new Date(nowDate.setDate(nowDate.getDate() - 7));
     return prevDate.toJSON().split("T")[0];
   });
+
   const [endDate, setEndDate] = useState(() => {
     const nowDate = new Date();
     return nowDate.toJSON().split("T")[0];
   });
+  const [data, setData] = useState();
+
+  const search = async () => {
+    try {
+      const res = await fetchData.getProductsReport({ fromDate, endDate });
+      if (res.length > 0) {
+        setData(res);
+      } else {
+        setData(null);
+      }
+    } catch (error) {
+      toast.error(error);
+    }
+  };
 
   const downloadExcelFile = () => {
     let rowIndex = 4;
     const workbook = excel.createExcelFile();
     const sheet1 = workbook.getWorksheet("sheet1");
     const nowDate = new Date();
+
     data.map((item, index) => {
       sheet1.getRow(rowIndex).values = [
         item.id,
@@ -262,6 +64,10 @@ function SystemReport() {
 
     excel.saveExcelFile(workbook, "Bao cao san xuat");
   };
+
+  useEffect(() => {
+    search();
+  }, []);
 
   return (
     <div className="systemReport__container">
@@ -286,61 +92,75 @@ function SystemReport() {
             onChange={(e) => setEndDate(e.target.value)}
           />
         </div>
-        <button>Tìm</button>
+        <button onClick={search}>Tìm</button>
       </div>
 
-      <div className="systemReport__chart">
-        <ResponsiveContainer>
-          <LineChart
-            data={data}
-            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-          >
-            <CartesianGrid strokeDasharray="1 8" />
-            <XAxis dataKey="dateTime" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Line type="monotone" dataKey="productsInDay" stroke="#8884d8" />
-            <Line type="monotone" dataKey="boxInDay" stroke="#82ca9d" />
-            <Line type="monotone" dataKey="rollOfPaper" stroke="#4da6ff" />
-            <Line type="monotone" dataKey="productsInABox" stroke="#ff80bf" />
-          </LineChart>
-        </ResponsiveContainer>
-      </div>
+      {data ? (
+        <>
+          <div className="systemReport__chart">
+            <ResponsiveContainer>
+              <LineChart
+                data={data}
+                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+              >
+                <CartesianGrid strokeDasharray="1 8" />
+                <XAxis dataKey="dateTime" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Line
+                  type="monotone"
+                  dataKey="productsInDay"
+                  stroke="#8884d8"
+                />
+                <Line type="monotone" dataKey="boxInDay" stroke="#82ca9d" />
+                <Line type="monotone" dataKey="rollOfPaper" stroke="#4da6ff" />
+                <Line
+                  type="monotone"
+                  dataKey="productsInABox"
+                  stroke="#ff80bf"
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
 
-      <div className="systemReport__table">
-        <div>
-          <table>
-            <thead>
-              <tr>
-                <td>Stt</td>
-                <td>Thời gian</td>
-                <td>Số sản phẩm trên ngày</td>
-                <td>Số họp trên ngày</td>
-                <td>Số cuộn giấy</td>
-                <td>Số sản phẩm trong một hộp</td>
-              </tr>
-            </thead>
+          <div className="systemReport__table">
+            <div>
+              <table>
+                <thead>
+                  <tr>
+                    <td>Stt</td>
+                    <td>Thời gian</td>
+                    <td>Số sản phẩm trên ngày</td>
+                    <td>Số họp trên ngày</td>
+                    <td>Số cuộn giấy</td>
+                    <td>Số sản phẩm trong một hộp</td>
+                  </tr>
+                </thead>
 
-            <tbody>
-              {data.map((item, index) => (
-                <tr key={index}>
-                  <td>{item.id}</td>
-                  <td>{item.dateTime}</td>
-                  <td>{item.productsInDay}</td>
-                  <td>{item.boxInDay}</td>
-                  <td>{item.rollOfPaper}</td>
-                  <td>{item.productsInABox}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+                <tbody>
+                  {data.map((item, index) => (
+                    <tr key={index}>
+                      <td>{index + 1}</td>
+                      <td>{item.dateTime.slice(0, 19)}</td>
+                      <td>{item.productsInDay}</td>
+                      <td>{item.boxInDay}</td>
+                      <td>{item.rollOfPaper}</td>
+                      <td>{item.productsInABox}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
 
-        <div className="systemReport__printBtn">
-          <button onClick={downloadExcelFile}>Tải về file excel</button>
-        </div>
-      </div>
+            <div className="systemReport__printBtn">
+              <button onClick={downloadExcelFile}>Tải về file excel</button>
+            </div>
+          </div>
+        </>
+      ) : (
+        <div className="not-found">Không có kết quả nào</div>
+      )}
     </div>
   );
 }

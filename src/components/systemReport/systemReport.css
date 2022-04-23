@@ -83,3 +83,10 @@
   margin-top: 20px;
   text-align: center;
 }
+
+.not-found {
+  text-align: center;
+  font-size: 160%;
+  font-weight: 500;
+  margin-top: 50px;
+}

@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 import { setLoginState } from "../../store/slices";
+import authApi from "../../api/auth";
 import "./login.css";
 
 function Login() {
@@ -11,14 +13,28 @@ function Login() {
   const [password, setPassword] = useState("");
 
   const handleSubmit = async () => {
-    //
-    dispatch(
-      setLoginState({
-        isLogin: true,
-      })
-    );
-    localStorage.setItem("isLogin", true);
-    navigate("/");
+    try {
+      if (username.length < 8 || password.length < 8) {
+        throw "Username and password must have length more than 8 characters";
+      }
+      const account = { username, password };
+      const res = await authApi.login(account);
+      toast.success("Loged in, Hello " + res.user);
+      dispatch(
+        setLoginState({
+          isLogin: true,
+          name: res.user,
+        })
+      );
+      localStorage.setItem("isLogin", true);
+      localStorage.setItem("name", res.user);
+      localStorage.setItem("authToken", res.authToken);
+
+      navigate("/");
+    } catch (error) {
+      toast.error(error);
+      setPassword("");
+    }
   };
 
   return (
