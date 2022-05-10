@@ -37,8 +37,8 @@ function SystemAlarm() {
                 alarms.map((item, index) => (
                   <tr key={index}>
                     <td>{item.no}</td>
-                    <td>{item.date}</td>
-                    <td>{item.status}</td>
+                    <td>{item.dateTime}</td>
+                    <td>{item.errorCode}</td>
                     <td>{item.message}</td>
                   </tr>
                 ))}

@@ -51,7 +51,7 @@ function SystemReport() {
         item.id,
         item.dateTime,
         item.productsInDay,
-        item.rollOfPaper,
+        item.rollsOfPaper,
         item.productsInABox,
       ];
       rowIndex++;
@@ -113,8 +113,8 @@ function SystemReport() {
                   dataKey="productsInDay"
                   stroke="#8884d8"
                 />
-                <Line type="monotone" dataKey="boxInDay" stroke="#82ca9d" />
-                <Line type="monotone" dataKey="rollOfPaper" stroke="#4da6ff" />
+                <Line type="monotone" dataKey="boxsInDay" stroke="#82ca9d" />
+                <Line type="monotone" dataKey="rollsOfPaper" stroke="#4da6ff" />
                 <Line
                   type="monotone"
                   dataKey="productsInABox"
@@ -144,8 +144,8 @@ function SystemReport() {
                       <td>{index + 1}</td>
                       <td>{item.dateTime.slice(0, 19)}</td>
                       <td>{item.productsInDay}</td>
-                      <td>{item.boxInDay}</td>
-                      <td>{item.rollOfPaper}</td>
+                      <td>{item.boxsInDay}</td>
+                      <td>{item.rollsOfPaper}</td>
                       <td>{item.productsInABox}</td>
                     </tr>
                   ))}
