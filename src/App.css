@@ -1,0 +1,51 @@
+@media screen and (max-width: 500px) {
+  .header__container {
+    display: block;
+    height: fit-content;
+    width: 100%;
+  }
+
+  .header__title {
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+  }
+
+  .header__nav nav {
+    visibility: hidden;
+    height: 0;
+  }
+
+  .header__changeTheme {
+    display: inline-block;
+    margin-left: 40px;
+    margin-bottom: 20px;
+  }
+
+  .header__account {
+    display: inline-block;
+    margin-left: 40px;
+  }
+
+  .header__name {
+    text-align: center;
+  }
+
+  .systemReport__container {
+    visibility: hidden;
+    height: 0;
+  }
+
+  .login__container {
+    width: 100%;
+  }
+
+  .change-device-msg {
+    visibility: visible;
+    text-align: center;
+    width: 90%;
+    margin: 10px auto;
+    font-size: 120%;
+    font-weight: 500;
+  }
+}

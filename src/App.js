@@ -7,6 +7,7 @@ import MonitorPage from "./pages/monitor";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Report from "./pages/report";
+import "./App.css";
 
 function App() {
   const navigate = useNavigate();
