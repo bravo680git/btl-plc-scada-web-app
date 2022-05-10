@@ -36,7 +36,7 @@ function SystemAlarm() {
               {alarms &&
                 alarms.map((item, index) => (
                   <tr key={index}>
-                    <td>{item.no}</td>
+                    <td>{index + 1}</td>
                     <td>{item.dateTime}</td>
                     <td>{item.errorCode}</td>
                     <td>{item.message}</td>

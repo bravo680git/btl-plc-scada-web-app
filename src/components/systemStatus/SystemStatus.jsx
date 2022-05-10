@@ -19,9 +19,9 @@ function SystemStatus() {
       setResData(res[0]);
       setStatusList(list);
     };
-    setStatus();
     try {
-      id = setInterval(setStatus, 10000);
+      setStatus();
+      id = setInterval(setStatus, 5000);
     } catch (error) {
       toast.error(error);
     }

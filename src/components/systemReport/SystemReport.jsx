@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import * as excel from "../../ultils/excel";
+import { useSelector } from "react-redux";
 import {
   LineChart,
   Line,
@@ -11,10 +11,13 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { toast } from "react-toastify";
+import * as excel from "../../ultils/excel";
 import fetchData from "../../api/fetchData";
 import "./systemReport.css";
 
 function SystemReport() {
+  const employeeName = useSelector((state) => state.store.loginState.name);
+
   const [fromDate, setFromDate] = useState(() => {
     const nowDate = new Date();
     const prevDate = new Date(nowDate.setDate(nowDate.getDate() - 7));
@@ -48,9 +51,10 @@ function SystemReport() {
 
     data.map((item, index) => {
       sheet1.getRow(rowIndex).values = [
-        item.id,
+        index + 1,
         item.dateTime,
         item.productsInDay,
+        item.boxsInDay,
         item.rollsOfPaper,
         item.productsInABox,
       ];
@@ -60,7 +64,7 @@ function SystemReport() {
     sheet1.getCell(rowIndex + 1, 5).value = `Ngày xuất báo cáo: ${
       nowDate.toJSON().split("T")[0]
     }`;
-    sheet1.getCell(rowIndex + 2, 5).value = `Nhân viên: ${"Hao"}`;
+    sheet1.getCell(rowIndex + 2, 5).value = `Nhân viên: ${employeeName}`;
 
     excel.saveExcelFile(workbook, "Bao cao san xuat");
   };
