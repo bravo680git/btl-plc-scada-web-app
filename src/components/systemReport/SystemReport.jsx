@@ -34,7 +34,12 @@ function SystemReport() {
     try {
       const res = await fetchData.getProductsReport({ fromDate, endDate });
       if (res.length > 0) {
-        setData(res);
+        setData(
+          res.map((item) => {
+            item.dateTime = item.dateTime.slice(0, 19);
+            return item;
+          })
+        );
       } else {
         setData(null);
       }
