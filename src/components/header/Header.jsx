@@ -12,8 +12,10 @@ function Header() {
   const changeTheme = () => {
     if (themeMode === "light") {
       dispatch(setThemeMode("dark"));
+      localStorage.setItem("themeMode", "dark");
     } else {
       dispatch(setThemeMode("light"));
+      localStorage.setItem("themeMode", "light");
     }
   };
 
