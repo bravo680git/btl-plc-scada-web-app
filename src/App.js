@@ -23,6 +23,10 @@ function App() {
   }, [themeMode]);
 
   useEffect(() => {
+    document.title = "Chương trình giám sát máy in lụa";
+  }, []);
+
+  useEffect(() => {
     if (!isLogin) {
       navigate("/login");
     }

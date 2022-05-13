@@ -13,6 +13,10 @@ function LoginPage() {
     }
   }, [isLogin]);
 
+  useEffect(() => {
+    document.title = "Đăng nhập | Chương trình giám sát máy in lụa";
+  }, []);
+
   return (
     <>
       <Header />

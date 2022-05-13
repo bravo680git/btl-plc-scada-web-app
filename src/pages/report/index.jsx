@@ -14,6 +14,10 @@ function Report() {
     }
   }, [isLogin]);
 
+  useEffect(() => {
+    document.title = "Báo cáo | Chương trình giám sát máy in lụa";
+  }, []);
+
   return (
     <>
       <Header />

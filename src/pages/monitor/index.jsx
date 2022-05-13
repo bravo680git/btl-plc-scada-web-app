@@ -15,6 +15,10 @@ function MonitorPage() {
     }
   }, [isLogin]);
 
+  useEffect(() => {
+    document.title = "Giám sát hệ thống | Chương trình giám sát máy in lụa";
+  }, []);
+
   return (
     <>
       <Header />
