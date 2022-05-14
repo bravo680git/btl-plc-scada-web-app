@@ -14,7 +14,7 @@ function Login() {
 
   const handleSubmit = async () => {
     try {
-      if (username.length < 8 || password.length < 8) {
+      if (username.length < 1 || password.length < 8) {
         throw "Username and password must have length more than 8 characters";
       }
       const account = { username, password };
@@ -24,6 +24,7 @@ function Login() {
         setLoginState({
           isLogin: true,
           name: res.user,
+          role: res.role,
         })
       );
       localStorage.setItem("isLogin", true);
