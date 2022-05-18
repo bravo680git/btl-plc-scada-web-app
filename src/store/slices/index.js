@@ -5,7 +5,7 @@ const initialState = {
   loginState: {
     isLogin: localStorage.getItem("isLogin") ?? false,
     name: localStorage.getItem("name") ?? "",
-    role: undefined,
+    role: localStorage.getItem("name") ?? undefined,
   },
 };
 

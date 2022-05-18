@@ -30,6 +30,7 @@ function Login() {
       localStorage.setItem("isLogin", true);
       localStorage.setItem("name", res.user);
       localStorage.setItem("authToken", res.authToken);
+      localStorage.setItem("role", res.role);
 
       navigate("/");
     } catch (error) {
