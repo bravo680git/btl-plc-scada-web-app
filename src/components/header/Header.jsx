@@ -62,7 +62,7 @@ function Header() {
 
       <div className="header__changeTheme">
         <div onClick={changeTheme}>
-          {themeMode === "light" ? <FaMoon /> : <FaSun />}
+          {themeMode === "light" ? <FaSun /> : <FaMoon />}
         </div>
       </div>
 

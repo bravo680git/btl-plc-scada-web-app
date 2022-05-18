@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { setLoginState } from "../../store/slices";
 import authApi from "../../api/auth";
+import Loading from "../loading/Loading";
 import "./login.css";
 
 function Login() {
@@ -11,6 +12,7 @@ function Login() {
   const dispatch = useDispatch();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async () => {
     try {
@@ -18,7 +20,9 @@ function Login() {
         throw "Username and password must have length more than 8 characters";
       }
       const account = { username, password };
+      setLoading(true);
       const res = await authApi.login(account);
+      setLoading(false);
       toast.success("Loged in, Hello " + res.user);
       dispatch(
         setLoginState({
@@ -34,6 +38,7 @@ function Login() {
 
       navigate("/");
     } catch (error) {
+      setLoading(false);
       toast.error(error);
       setPassword("");
     }
@@ -76,6 +81,7 @@ function Login() {
           </div>
         </form>
       </div>
+      <Loading loading={loading} />
     </>
   );
 }

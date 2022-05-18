@@ -13,6 +13,7 @@ import {
 import { toast } from "react-toastify";
 import * as excel from "../../ultils/excel";
 import fetchData from "../../api/fetchData";
+import Loading from "../loading/Loading";
 import "./systemReport.css";
 
 function SystemReport() {
@@ -29,10 +30,14 @@ function SystemReport() {
     return nowDate.toJSON().split("T")[0];
   });
   const [data, setData] = useState();
+  const [loading, setLoading] = useState(false);
 
   const search = async () => {
     try {
+      setLoading(true);
       const res = await fetchData.getProductsReport({ fromDate, endDate });
+      setLoading(false);
+
       if (res.length > 0) {
         setData(
           res.map((item) => {
@@ -44,6 +49,7 @@ function SystemReport() {
         setData(null);
       }
     } catch (error) {
+      setLoading(false);
       toast.error(error);
     }
   };
@@ -176,6 +182,8 @@ function SystemReport() {
         Thiết bị không hỗ trợ xem báo cáo. Vui lòng sử dụng thiết bị có độ phân
         giải lớn hơn.
       </div>
+
+      <Loading loading={loading} />
     </div>
   );
 }
