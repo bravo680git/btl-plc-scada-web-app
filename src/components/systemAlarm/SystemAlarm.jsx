@@ -3,19 +3,32 @@ import { toast } from "react-toastify";
 import fetchData from "../../api/fetchData";
 import "./systemAlarm.css";
 
-function SystemAlarm() {
+function SystemAlarm({ socket }) {
   const [alarms, setAlarms] = useState();
 
   useEffect(() => {
     (async () => {
       try {
         const res = await fetchData.getAlarms();
-        setAlarms(res);
+        const reverseRes = res.reverse();
+        setAlarms(reverseRes);
       } catch (error) {
         toast.error(error);
       }
     })();
   }, []);
+
+  useEffect(() => {
+    if (!socket) return;
+
+    socket.on("alarm:send", (res) => {
+      setAlarms((alarms) => [...res, ...alarms]);
+    });
+
+    return () => {
+      socket.off("alarms:send");
+    };
+  }, [socket]);
 
   return (
     <>
