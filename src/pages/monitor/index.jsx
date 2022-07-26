@@ -41,6 +41,13 @@ function MonitorPage() {
 
     socket.on("connect", () => console.log("Connect to websocket server"));
     socket.on("disconnect", () => alert("Disconnet to websocket server"));
+
+    return () => {
+      socket.off("system:send");
+      socket.off("connect");
+      socket.off("disconnect");
+      socket.disconnect();
+    };
   }, []);
 
   useEffect(() => {
