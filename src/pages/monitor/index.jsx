@@ -20,7 +20,9 @@ function MonitorPage() {
   }, [isLogin, navigate]);
 
   useEffect(() => {
-    const socket = io("https://scada-api.herokuapp.com/");
+    const socket = io("https://scada-api.herokuapp.com", {
+      auth: { token: localStorage.getItem("authToken") },
+    });
     setSocket(socket);
     socket.on("connect", () => console.log("Connect to websocket server"));
     socket.on("disconnect", () => alert("Disconnet to websocket server"));
