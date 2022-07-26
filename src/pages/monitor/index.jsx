@@ -20,10 +20,25 @@ function MonitorPage() {
   }, [isLogin, navigate]);
 
   useEffect(() => {
-    const socket = io("https://scada-api.herokuapp.com", {
+    const serverURL = {
+      cloud: "https://scada-api.herokuapp.com",
+      local: "http://localhost:5000",
+    };
+    const socket = io(serverURL.cloud, {
       auth: { token: localStorage.getItem("authToken") },
     });
     setSocket(socket);
+
+    socket.on("system:send", (systemData) => {
+      if (!systemData.serviceConnected) {
+        alert(
+          "Service disconnected!!!\nCan't monitor data from websocket server"
+        );
+      } else {
+        console.log("Service connected");
+      }
+    });
+
     socket.on("connect", () => console.log("Connect to websocket server"));
     socket.on("disconnect", () => alert("Disconnet to websocket server"));
   }, []);
